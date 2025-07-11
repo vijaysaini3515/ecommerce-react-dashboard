@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { FaImages } from "react-icons/fa6";
@@ -9,8 +9,21 @@ import { TbCategory2 } from "react-icons/tb";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
+import {Collapse} from 'react-collapse';
 
 const Sidebar = () => {
+  const[subMenuIndex,setSubMenuIndex] = useState(null);
+
+  const isOpenSubMenu = (index)=>{
+    if(subMenuIndex === index){
+      setSubMenuIndex(null)
+    }else{
+      setSubMenuIndex(index)
+    }
+  }
+
+
+
   return (
    <div className="sidebar py-2 px-4 h-full w-[18%] fixed top-0 left-0 bg-[#fff] border border-[rgba(0,0,0,0.1)]">
 
@@ -22,58 +35,118 @@ const Sidebar = () => {
 
     <ul className='mt-4'>
       <li>
-        <Button className='w-full !py-2 !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
-          <TbLayoutDashboardFilled  className="text-[18px]" />
-          <span>Dashboard</span>
-        </Button>
+        <Link to='/'>
+          <Button className='w-full !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+            <TbLayoutDashboardFilled  className="text-[18px]" />
+            <span>Dashboard</span>
+          </Button>
+        </Link>
       </li>
       
       <li>
-        <Button className='w-full  !py-2 !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+        <Button onClick={()=>isOpenSubMenu(1)} className='w-full  !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
           <FaImages  className="text-[18px]" />
           <span>Home Slides</span>
           <span className='ml-auto w-[30px] h-[30px] flex items-center justify-center'>
-            <FaAngleDown />
+            <FaAngleDown className={`transition-all ${subMenuIndex === 1 ? 'rotate-180':''}`} />
           </span>
         </Button>
+
+        <Collapse isOpened={subMenuIndex === 1 ? true : false}>
+          <ul className='w-full'>
+            <li className='w-full'>
+              <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span> Home Banner List</Button>
+            </li>
+            <li className='w-full'>
+              <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add Home Banner slide</Button>
+            </li>
+          </ul>
+        </Collapse>        
+
       </li>
 
       <li>
-        <Button className='w-full !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
-          <HiUsers  className="text-[18px]" />
-          <span>Users</span>
-        </Button>
+        <Link to='/users'>
+          <Button className='w-full hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+            <HiUsers  className="text-[18px]" />
+            <span>Users</span>
+          </Button>
+        </Link>  
       </li>
 
       <li>
-        <Button className='w-full  !py-2 !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+        <Button onClick={()=>isOpenSubMenu(2)} className='w-full  !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
           <TbBrandProducthunt  className="text-[18px]" />
           <span>Products</span>
           <span className='ml-auto w-[30px] h-[30px] flex items-center justify-center'>
-            <FaAngleDown />
+            <FaAngleDown className={`transition-all ${subMenuIndex === 2 ?'rotate-180':''}`} />
           </span>
         </Button>
+
+        <Collapse isOpened={subMenuIndex === 2 ? true : false}>
+          <ul className='w-full'>
+            <Link to='/products'>
+              <li className='w-full'>
+                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Product List</Button>
+              </li>
+            </Link>
+            <Link to='/product/upload'>
+              <li className='w-full'>
+                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Upload Product</Button>
+              </li>
+            </Link>
+          </ul>
+        </Collapse>
+
       </li>
 
       <li>
-        <Button className='w-full  !py-2 !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+        <Button onClick={()=>isOpenSubMenu(3)} className='w-full  !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
           <TbCategory2  className="text-[18px]" />
           <span>Category</span>
           <span className='ml-auto w-[30px] h-[30px] flex items-center justify-center'>
-            <FaAngleDown />
+            <FaAngleDown className={`transition-all ${subMenuIndex === 3 ? 'rotate-180': ''}`} />
           </span>
         </Button>
+
+        <Collapse isOpened={subMenuIndex === 3 ? true : false}>
+          <ul className='w-full'>
+            <Link to="/categories">
+              <li className='w-full'>
+                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Category List</Button>
+              </li>
+            </Link>
+            <Link to="/category/add">
+              <li className='w-full'>
+                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add a category</Button>
+              </li>
+            </Link>
+            <Link to="/category/subCat">
+              <li className='w-full'>
+                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Sub-category List</Button>
+              </li>
+            </Link>
+            <Link to="/category/subCat/add">
+            <li className='w-full'>
+              <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add a Sub-category</Button>
+            </li>
+            </Link>
+          </ul>
+        </Collapse>
+
       </li>
 
       <li>
-        <Button className='w-full  !py-2 !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
-          <IoBagCheckOutline  className="text-[18px]" />
-          <span>Orders</span>
-        </Button>
+        <Link to='orders'>
+          <Button className='w-full  !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+            <IoBagCheckOutline  className="text-[18px]" />
+            <span>Orders</span>
+          </Button>
+        </Link>
       </li>
 
       <li>
-        <Button className='w-full  !py-2 !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
+        <Button className='w-full  !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
           <IoMdLogOut  className="text-[18px]" />
           <span>Logout</span>
         </Button>
