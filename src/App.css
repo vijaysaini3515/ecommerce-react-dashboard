@@ -1,9 +1,21 @@
 body{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
+  background: #d2dbed2e;
 }
 
 
 .ReactCollapse--collapse {
   transition: height 300ms;
+}
+
+
+.btn-blue{
+  background: #3872fa !important;
+  color: #fff !important;
+  padding: 8px 20px !important;
+}
+
+.btn-blue:hover{
+  background-color: #2e5cc7 !important;
 }

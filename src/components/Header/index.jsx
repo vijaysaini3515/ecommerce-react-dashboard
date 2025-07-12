@@ -35,7 +35,7 @@ const Header = () => {
 
 
   return (
-   <header className='pl-64 pr-3 py-2 w-full h-[auto] shadow-sm flex items-center justify-between'>
+   <header className='bg-white pl-64 pr-3 py-2 w-full h-[auto] shadow-sm flex items-center justify-between'>
         <div className="part1">
             <Button className='!w-[40px] !min-w-[40px] !h-[40px] !rounded-full !text-[rgba(0,0,0,0.8)]'>
                 <HiOutlineMenuAlt1 className="text-[18px] text-[rgba(0,0,0,0.8)] " />
@@ -105,7 +105,7 @@ const Header = () => {
                     <MenuItem>
                       <div className='w-full flex items-center gap-3'>
                             <FaRegUser  className='text-[18px]'/>
-                            <span className='text-[14px] '>Profile</span>
+                            <span className='text-[14px]'>Profile</span>
                       </div>
                     </MenuItem>
                     <MenuItem>

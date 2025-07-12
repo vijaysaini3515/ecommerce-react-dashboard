@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+:root{
+    --font-family1: Roboto, sans-serif;
+    --font-family2: Paper, sans-serif;
+    --font-family3: Figerly, sans-serif;
+}
+@theme{
+    --font-family1: Roboto, sans-serif;
+    --font-family2: Paper, sans-serif;
+    --font-family3: Figerly, sans-serif;
+}
+
+
+@font-face {
+    font-family:'Roboto';
+    src: url('./assets/fonts/Roboto-Regular.ttf')format('ttf');
+}
+
+@font-face {
+    font-family:'Paper';
+    src: url('./assets/fonts/PEPPERCo.otf')format('otf');
+}
+
+@font-face {
+    font-family:'Figerly';
+    src: url('./assets/fonts/Figerly-Regular.otf')format('otf');
+}
