@@ -5,7 +5,12 @@
     --font-family2: Paper, sans-serif;
     --font-family3: Figerly, sans-serif;
 }
+
+::-webkit-scrollbar{width: 10px !important; height: 10px!important;}
+::-webkit-scrollbar-thumb{background-color: #c0c5c9;border-radius: 20px !important;}
+
 @theme{
+    --primary:#3872fa;
     --font-family1: Roboto, sans-serif;
     --font-family2: Paper, sans-serif;
     --font-family3: Figerly, sans-serif;

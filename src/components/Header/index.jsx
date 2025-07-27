@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.scss'
 import Button from '@mui/material/Button';
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
@@ -11,6 +11,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import { FaRegUser } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
+import {MyContext} from '../../App'
+
+import { RiMenuFoldLine } from "react-icons/ri";
+import { RiMenuFold2Line } from "react-icons/ri";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -22,7 +26,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   }));
 
 const Header = () => {
-
+  const context = useContext(MyContext)
   const [anchorMyAccEl, setAnchorMyAccEl] = React.useState(null);
   const open = Boolean(anchorMyAccEl);
 
@@ -35,10 +39,12 @@ const Header = () => {
 
 
   return (
-   <header className='bg-white pl-64 pr-3 py-2 w-full h-[auto] shadow-sm flex items-center justify-between'>
+   <header className={`bg-white ${context.isSideBarOpen === true ? 'pl-64' : 'pl-5'} transition-all pr-3 py-2 w-full h-[auto] shadow-sm flex items-center justify-between`}>
         <div className="part1">
-            <Button className='!w-[40px] !min-w-[40px] !h-[40px] !rounded-full !text-[rgba(0,0,0,0.8)]'>
-                <HiOutlineMenuAlt1 className="text-[18px] text-[rgba(0,0,0,0.8)] " />
+            <Button onClick={()=>context.setIsSideBarOpen(!context.isSideBarOpen)} className='!w-[40px] !min-w-[40px] !h-[40px] !rounded-full !text-[rgba(0,0,0,0.8)]'>
+                {
+                   context.isSideBarOpen === true ? <RiMenuFoldLine className="text-[22px] text-[rgba(0,0,0,0.8)] " /> : <RiMenuFold2Line className="text-[22px] text-[rgba(0,0,0,0.8)] " />  
+                }
             </Button>
         </div>
 
