@@ -12,6 +12,8 @@ import Rating from '@mui/material/Rating';
 import ProgressBar from '../../components/ProgressBar';
 import Tooltip from '@mui/material/Tooltip';
 import Pagination from '@mui/material/Pagination';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import { HiPlusSm } from "react-icons/hi";
 import { FaAngleDown } from "react-icons/fa6";
@@ -19,10 +21,14 @@ import { FaAngleUp } from "react-icons/fa6";
 import { MdModeEditOutline } from "react-icons/md";
 import { HiEye } from "react-icons/hi";
 import { LuTrash2 } from "react-icons/lu";
+import { AiOutlineCloudDownload } from "react-icons/ai";
+import { FaPlus } from "react-icons/fa6";
 
 const Dashboard = () => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const[isOpenOrderProduct,setOpenOrderProduct] = useState(null);
+
+  const [categoryFilter, setCategoryFilter] = React.useState('');
 
 
   const isShowOrderProducts =(index)=>{
@@ -32,6 +38,10 @@ const Dashboard = () => {
     setOpenOrderProduct(index)
    }
   }
+
+  const handleChangeCategoryFilter = (event) => {
+    setCategoryFilter(event.target.value);
+  };
 
 
 
@@ -464,10 +474,39 @@ const Dashboard = () => {
           </div>
 
       </div>
+
+
 {/* second table */}
       <div className='card my-4 shadow-md sm:rounded-lg bg-white'>
         <div className='flex items-center justify-between px-5 py-5'>
-            <h3 className='text-[18px] font-[600]'>Products</h3>
+            <h3 className='text-[18px] font-[600] '>Products</h3>
+          </div>
+
+          <div className="flex items-center justify-between w-full pl-5 mb-2">
+
+            <div className='col w-[20%]'>
+              <h4 className='font-[600] text-[18px]'>Category By</h4>
+                <Select
+                  className='w-full mt-2'
+                  size='small'
+                  id="demo-simple-select-helper"
+                  value={categoryFilter}
+                  onChange={handleChangeCategoryFilter}
+                >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Man</MenuItem>
+                    <MenuItem value={20}>Woman</MenuItem>
+                    <MenuItem value={30}>Kids</MenuItem>
+                </Select>
+            </div>
+
+            <div className="col w-[22%] ml-auto flex items-center gap-3 ">
+                 <Button className='btn btn-sm !bg-green-600 !text-white flex items-center gap-1 !normal-case'> <AiOutlineCloudDownload className='text-[18px] font-[800] ' /> Export</Button>                       
+                 <Button className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
+            </div>
+
           </div>
 
           <div className="col1 w-full lg:w-[100%] ">
