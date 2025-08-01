@@ -9,10 +9,13 @@ const MyContext = createContext();
 
 const App = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   const value = {
     isSideBarOpen,
     setIsSideBarOpen,
+    isLogin,
+    setIsLogin,
   };
 
   const router = createBrowserRouter([

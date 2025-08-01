@@ -15,6 +15,7 @@ import {MyContext} from '../../App'
 
 import { RiMenuFoldLine } from "react-icons/ri";
 import { RiMenuFold2Line } from "react-icons/ri";
+import { BiLogInCircle } from "react-icons/bi";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -48,82 +49,90 @@ const Header = () => {
             </Button>
         </div>
 
-        <div className="part2 w-[40%] flex items-center justify-end gap-5">
-            <IconButton aria-label="cart">
-                <StyledBadge badgeContent={4} color="secondary">
-                    <FaRegBell />
-                </StyledBadge>
-            </IconButton>
-
-            <div className="relative">
-                <div onClick={handleClickMyAcc} className="h-[35px] w-[35px] rounded-full overflow-hidden cursor-pointer">
-                    <img src="https://isomorphic-furyroad.vercel.app/avatar.webp" alt="" />
+        {
+            context.isLogin === true ? (
+                <div className="part2 w-[40%] flex items-center justify-end gap-5">
+                    <IconButton aria-label="cart">
+                        <StyledBadge badgeContent={4} color="secondary">
+                            <FaRegBell />
+                        </StyledBadge>
+                    </IconButton>
+        
+                    <div className="relative">
+                        <div onClick={handleClickMyAcc} className="h-[35px] w-[35px] rounded-full overflow-hidden cursor-pointer">
+                            <img src="https://isomorphic-furyroad.vercel.app/avatar.webp" alt="" />
+                        </div>
+                        <Menu
+                            anchorEl={anchorMyAccEl}
+                            id="account-menu"
+                            open={open}
+                            onClose={handleCloseMyAcc}
+                            onClick={handleCloseMyAcc}
+                            slotProps={{
+                            paper: {
+                                elevation: 0,
+                                sx: {
+                                overflow: 'visible',
+                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                mt: 1.5,
+                                '& .MuiAvatar-root': {
+                                    width: 32,
+                                    height: 32,
+                                    ml: -0.5,
+                                    mr: 1,
+                                },
+                                '&::before': {
+                                    content: '""',
+                                    display: 'block',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 14,
+                                    width: 10,
+                                    height: 10,
+                                    bgcolor: 'background.paper',
+                                    transform: 'translateY(-50%) rotate(45deg)',
+                                    zIndex: 0,
+                                },
+                                },
+                            },
+                            }}
+                            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                        >
+                            <MenuItem onClick={handleCloseMyAcc} className='!bg-white'>
+                            <div className='flex items-center gap-3'>
+                                    <div onClick={handleClickMyAcc} className="h-[35px] w-[35px] rounded-full overflow-hidden cursor-pointer">
+                                        <img src="https://isomorphic-furyroad.vercel.app/avatar.webp" alt="" />
+                                    </div>
+                                    <div className="info">
+                                        <h3 className='text-[16px] font-[600] leading-5'>Temp user </h3>
+                                        <p className='text-[13px] font-[400] opacity-75'>test@gamil.com</p>
+                                    </div>
+                            </div>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem>
+                            <div className='w-full flex items-center gap-3'>
+                                    <FaRegUser  className='text-[18px]'/>
+                                    <span className='text-[14px]'>Profile</span>
+                            </div>
+                            </MenuItem>
+                            <MenuItem>
+                            <div className='w-full flex items-center gap-3'>
+                                    <IoMdLogOut  className='text-[18px]'/>
+                                    <span className='text-[14px] '>Logout</span>
+                            </div>
+                            </MenuItem>
+                            
+                        </Menu>
+                    </div>
                 </div>
-                <Menu
-                    anchorEl={anchorMyAccEl}
-                    id="account-menu"
-                    open={open}
-                    onClose={handleCloseMyAcc}
-                    onClick={handleCloseMyAcc}
-                    slotProps={{
-                    paper: {
-                        elevation: 0,
-                        sx: {
-                        overflow: 'visible',
-                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
-                        '& .MuiAvatar-root': {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                        },
-                        '&::before': {
-                            content: '""',
-                            display: 'block',
-                            position: 'absolute',
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: 'background.paper',
-                            transform: 'translateY(-50%) rotate(45deg)',
-                            zIndex: 0,
-                        },
-                        },
-                    },
-                    }}
-                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                >
-                    <MenuItem onClick={handleCloseMyAcc} className='!bg-white'>
-                       <div className='flex items-center gap-3'>
-                            <div onClick={handleClickMyAcc} className="h-[35px] w-[35px] rounded-full overflow-hidden cursor-pointer">
-                                <img src="https://isomorphic-furyroad.vercel.app/avatar.webp" alt="" />
-                            </div>
-                            <div className="info">
-                                <h3 className='text-[16px] font-[600] leading-5'>Temp user </h3>
-                                <p className='text-[13px] font-[400] opacity-75'>test@gamil.com</p>
-                            </div>
-                       </div>
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem>
-                      <div className='w-full flex items-center gap-3'>
-                            <FaRegUser  className='text-[18px]'/>
-                            <span className='text-[14px]'>Profile</span>
-                      </div>
-                    </MenuItem>
-                    <MenuItem>
-                      <div className='w-full flex items-center gap-3'>
-                            <IoMdLogOut  className='text-[18px]'/>
-                            <span className='text-[14px] '>Logout</span>
-                      </div>
-                    </MenuItem>
-                    
-                </Menu>
-            </div>
-        </div>
+            ) : (
+                <Button className='btn-blue !btn-sm !rounded-full !normal-case flex items-center gap-2'>Sign In  <BiLogInCircle className='text-[18px]'/> </Button>
+            )
+        }
+
+       
    </header>
   )
 }

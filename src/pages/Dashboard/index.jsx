@@ -23,6 +23,7 @@ import { HiEye } from "react-icons/hi";
 import { LuTrash2 } from "react-icons/lu";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa6";
+import LineChart1 from '../../components/Charts/LineChart1';
 
 const Dashboard = () => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -502,7 +503,7 @@ const Dashboard = () => {
                 </Select>
             </div>
 
-            <div className="col w-[22%] ml-auto flex items-center gap-3 ">
+            <div className="col w-[26%] ml-auto flex items-center gap-3 ">
                  <Button className='btn btn-sm !bg-green-600 !text-white flex items-center gap-1 !normal-case'> <AiOutlineCloudDownload className='text-[18px] font-[800] ' /> Export</Button>                       
                  <Button className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
             </div>
@@ -754,9 +755,19 @@ const Dashboard = () => {
 
           </div>
 
-          
-
       </div>
+
+      <div className='card my-4 shadow-md sm:rounded-lg bg-white'>
+          <div className='px-5 py-5'>
+            <h3 className='text-[18px] font-[600] mb-5'>Total User and Seals</h3>
+          </div>
+          <div className='p-2'>
+            <LineChart1 />
+          </div>
+      </div>
+          
+            
+          
 
     </>
   )
