@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Login from './pages/Login';
 
 const MyContext = createContext();
 
@@ -34,6 +35,10 @@ const App = () => {
           </div>
         </section>
       ),
+    },
+    {
+      path: '/login',
+      element: <Login />,
     },
   ]);
 
