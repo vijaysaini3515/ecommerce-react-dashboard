@@ -1,9 +1,10 @@
 import React from 'react';
-import './login.scss'
+import './signup.scss'
 import whiteBgImg from '../../assets/images/LoginImg.webp';
 import logo from '../../assets/images/logo.svg';
 import { Link, NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
@@ -14,7 +15,7 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 
-const Login = () => {
+const SignUp = () => {
 
     const [loadingGoogle, setLoadingGoogle] = React.useState(false);
     const [loadingFacebook, setLoadingFacebook] = React.useState(false);
@@ -60,14 +61,14 @@ const Login = () => {
         style={{ objectFit: 'cover', height: '100vh' }} 
       />
 
-      <div className="loginBox card w-[500px] h-[300px] mx-auto mt-5  relative z-10"> 
+      <div className="loginBox card w-[500px] h-[300px] mx-auto mt-1  relative z-10"> 
         <div className="text-center p-4">
           <img src={logo} alt="Logo" className="m-auto w-[100px]" />
         </div>
 
-        <h1 className='font-[800] text-[35px] text-center mt-4'>Welcome Back <br/> SignIn with your credential.</h1>
+        <h1 className='font-[800] text-[35px] text-center mt-2'>Join us today! Get special <br/>benefits and stay up-to-date.</h1>
 
-          <div className='flex items-center justify-center gap-5 mt-5'>
+          <div className='flex items-center justify-center gap-5 mt-3'>
                   <Button
                       size="small"
                       onClick={handleClickGoogle}
@@ -100,18 +101,23 @@ const Login = () => {
             <span className='w-[100px] h-[1px] bg-[rgba(236,236,236,0.5)] flex items-center justify-center '></span>
           </div>
 
-          <br />
 
           <form className='w-full px-8 mt-3'>
-          
-            <div className='form-group mb-4 w-full'>
+            <div className='form-group mb-2 w-full'>
+                <h4 className='text-white'>Full Name</h4>
+                <input 
+                   type="text"  
+                   className='w-full bg-white text-black h-[45px] px-3 border-2 border-[rgba(0,0,0,0,2)] rounded-sm focus:border-[rgba(0,0,0,0.7)] focus:outline-none'
+                />
+            </div>
+            <div className='form-group mb-2 w-full'>
                 <h4 className='text-white'>Email</h4>
                 <input 
                    type="email"  
                    className='w-full bg-white text-black h-[45px] px-3 border-2 border-[rgba(0,0,0,0,2)] rounded-sm focus:border-[rgba(0,0,0,0.7)] focus:outline-none'
                 />
             </div>
-            <div className='form-group mb-4 w-full'>
+            <div className='form-group mb-2 w-full'>
                 <h4 className='text-white'>Password</h4>
                 <div className='w-full relative'>
                   <input 
@@ -126,10 +132,11 @@ const Login = () => {
                 </div>
             </div>
             <div className='form-group mb-4 w-full flex items-center justify-between'>
-               <FormControlLabel control={<Checkbox size='small' sx={{ color: 'white', '&.Mui-checked': {color: 'white'}}} defaultChecked />} label="Remember me" sx={{color: 'white',}} />
-               <Link className='text-[var(--primary)] font-[700] text-[14px] hover:text-gray-300 hover:underline' to='/forget-password'>Forget Password</Link>
+               <FormControlLabel 
+                 control={<Checkbox size='small' sx={{ color: 'white', '&.Mui-checked': {color: 'white'}}} defaultChecked />} 
+                 label={<Typography sx={{ fontSize: '13px', color: 'white' }}>By signing up you have agreed to our <span className='font-[800] text-[14px]'>Terms</span> & <span className='font-[800]  text-[14px]'>Privacy Policy</span></Typography>} />
             </div>
-            <Button className='btn-lg w-full !capitalize'>Sign In</Button>
+            <Button className='btn-lg w-full !capitalize'>Sign Up</Button>
           </form>
 
       </div>
@@ -138,4 +145,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default SignUp;
