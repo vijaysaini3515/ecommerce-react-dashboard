@@ -92,11 +92,9 @@ const Sidebar = () => {
                 <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Product List</Button>
               </li>
             </Link>
-            <Link to='/product/upload'>
               <li className='w-full'>
-                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Upload Product</Button>
+                <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add Product'})} className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Upload Product</Button>
               </li>
-            </Link>
           </ul>
         </Collapse>
 

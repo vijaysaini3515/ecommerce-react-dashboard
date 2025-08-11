@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import DashboardCardBoxes from '../../components/DashboardCardBoxes';
 import homeImg from '../../assets/images/shop-illustration.webp'
 import RowImg from '../../assets/images/grape2.jpg'
@@ -24,12 +24,13 @@ import { LuTrash2 } from "react-icons/lu";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa6";
 import LineChart1 from '../../components/Charts/LineChart1';
+import { MyContext } from '../../App';
 
 const Dashboard = () => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const[isOpenOrderProduct,setOpenOrderProduct] = useState(null);
-
   const [categoryFilter, setCategoryFilter] = React.useState('');
+  const context = useContext(MyContext)
 
 
   const isShowOrderProducts =(index)=>{
@@ -54,7 +55,8 @@ const Dashboard = () => {
         <div className="info">
           <h1 className='mb-3 text-[35px] font-bold leading-10'>Good Morning, <br /> Cameron</h1>
           <p className='text-[rgba(0,0,0,0.6)] mb-2'>Here’s What happening on your store today. See the statistics at once.</p>
-          <Button className='btn-blue !capitalize'><HiPlusSm/>Add Product</Button>
+          <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add Product'})} className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
+
         </div>
         <img className='w-[250px] hover:scale-105 transition-all' src={homeImg} alt="" />
       </div>
@@ -505,7 +507,7 @@ const Dashboard = () => {
 
             <div className="col w-[26%] ml-auto flex items-center gap-3 ">
                  <Button className='btn btn-sm !bg-green-600 !text-white flex items-center gap-1 !normal-case'> <AiOutlineCloudDownload className='text-[18px] font-[800] ' /> Export</Button>                       
-                 <Button className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
+                 <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add Product'})} className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
             </div>
 
           </div>
