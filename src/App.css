@@ -3,6 +3,12 @@ body{
   font-optical-sizing: auto;
   background: #d2dbed2e;
 }
+.container{
+  width: 90vw !important;
+  max-width: 90vw !important;
+  min-width: 90vw !important;
+  margin: auto !important;
+}
 
 
 .ReactCollapse--collapse {

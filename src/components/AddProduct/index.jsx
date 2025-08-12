@@ -53,8 +53,8 @@ const AddProduct = () => {
    <section className='p-2 overflow-hidden'>
     <div className='cart bg-[#f1f1f1] shadow-sm w-full p-5 '>
       <h1 className='text-[22px] font-[700] text-gray-800'>Upload Product</h1>
-
     </div>
+    
       <div className='cart bg-[#f1f1f1] shadow-sm w-full p-5 mt-2 '>
         <form className='form py-3 p-5'>
           <div className="scroll pr-4 max-h-[60vh] overflow-y-scroll">

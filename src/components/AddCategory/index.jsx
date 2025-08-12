@@ -8,18 +8,27 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-const AddHomeSlide = () => {
+const AddCategory = () => {
   return (
-    <section>
-      <div className="cart bg-[#f1f1f1] shadow-sm w-full p-5 ">
-        <h1 className="text-[22px] font-[700] text-gray-800">
-          Upload Home Banner Images
-        </h1>
+    <section className="">
+      <div className="cart  bg-[#f1f1f1] shadow-sm w-full py-3 px-2 ">
+        <h1 className="text-[22px] font-[700] text-gray-800">Add Category</h1>
       </div>
-      <form>
-        <div className="col container w-full p-5 px-0">
-          <h3 className="font-[700] text-[18px] mb-2">Banner's images</h3>
 
+      <form className="container py-5 ">
+
+        <div className="grid grid-cols-1 mb-3">
+          <div className="col">
+            <h3 className="mb-1 text-[18px] font-[600]">Product Name</h3>
+            <input
+              type="text"
+              className="bg-white w-full h-[40px] text-sm rounded-sm p-2  border border-[rgba(0,0,0,0.1)] focus:border-[rgba(0,0,0,0.4)] focus:outline-none"
+            />
+          </div>
+        </div>
+        <br/>
+        <div className="col w-full p-5 px-0">
+          <h3 className="font-[700] text-[18px] mb-2">Category's images</h3>
           <div className="grid grid-cols-7 gap-3 ">
             <div className="uploadBoxWrapper relative">
               <span className="absolute -top-[5px] -right-[5px] z-50 h-[20px] w-[20px] rounded-full overflow-hidden flex items-center justify-center cursor-pointer bg-red-700">
@@ -144,11 +153,9 @@ const AddHomeSlide = () => {
             <FaCloudUploadAlt className="w-[25px] text-white" /> Publish & view
           </Button>
         </div>
-
-       
       </form>
     </section>
   );
 };
 
-export default AddHomeSlide;
+export default AddCategory;

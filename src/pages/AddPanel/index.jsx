@@ -11,6 +11,8 @@ import { MyContext } from '../../App';
 import Slide from '@mui/material/Slide';
 import AddProduct from '../../components/AddProduct';
 import AddHomeSlide from '../../components/AddHomeSlide';
+import AddCategory from '../../components/AddCategory';
+import AddSubCategory from '../../components/AddSubCategory';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -52,6 +54,12 @@ const AddPanel = () => {
                     }
                     {
                         context.isOpenPanel?.model === 'Add Home Slide' &&  <AddHomeSlide />
+                    }
+                    {
+                        context.isOpenPanel?.model === 'Add New Category' &&  <AddCategory />
+                    }
+                    {
+                        context.isOpenPanel?.model === 'Add New Sub Category' &&  <AddSubCategory />
                     }
             </Dialog>
         </>

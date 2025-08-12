@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { FaImages } from "react-icons/fa6";
 import { HiUsers } from "react-icons/hi2";
@@ -13,6 +13,7 @@ import {Collapse} from 'react-collapse';
 import { MyContext } from '../../App';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const context = useContext(MyContext)
   const[subMenuIndex,setSubMenuIndex] = useState(null);
 
@@ -57,10 +58,10 @@ const Sidebar = () => {
         <Collapse isOpened={subMenuIndex === 1 ? true : false}>
           <ul className='w-full'>
             <li className='w-full'>
-              <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span> Home Banner List</Button>
+              <Button onClick={()=>navigate('/homeSlider/list')} className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span> Home Banner List</Button>
             </li>
             <li className='w-full'>
-              <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add Home Banner slide</Button>
+              <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add Home Slide'})} className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add Home Banner slide</Button>
             </li>
           </ul>
         </Collapse>        
@@ -111,33 +112,29 @@ const Sidebar = () => {
 
         <Collapse isOpened={subMenuIndex === 3 ? true : false}>
           <ul className='w-full'>
-            <Link to="/categories">
+            <Link to="/category/list">
               <li className='w-full'>
                 <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Category List</Button>
               </li>
             </Link>
-            <Link to="/category/add">
               <li className='w-full'>
-                <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add a category</Button>
+                <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add New Category'})} className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add a category</Button>
               </li>
-            </Link>
-            <Link to="/category/subCat">
+            <Link to="/subCategory/list">
               <li className='w-full'>
                 <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Sub-category List</Button>
               </li>
             </Link>
-            <Link to="/category/subCat/add">
             <li className='w-full'>
-              <Button className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add a Sub-category</Button>
+              <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add New Sub Category'})} className='!w-full !pl-5 !text-[rgba(0,0,0,0.7)] !text-[13px] !font-[400] !capitalize !justify-start flex items-center gap-2'><span className='block w-[5px] h-[5px] rounded-full bg-[rgba(0,0,0,0.2)]'></span>Add a Sub-category</Button>
             </li>
-            </Link>
           </ul>
         </Collapse>
 
       </li>
 
       <li>
-        <Link to='orders'>
+        <Link to='/orders'>
           <Button className='w-full  !py-2 hover:!bg-[#f1f1f1] !capitalize !justify-start !text-[14px] !font-[18px] !text-[rgba(0,0,0,0.8)] flex items-center gap-3'>
             <IoBagCheckOutline  className="text-[18px]" />
             <span>Orders</span>

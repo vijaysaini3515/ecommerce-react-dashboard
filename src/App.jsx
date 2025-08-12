@@ -9,6 +9,10 @@ import SignUp from './pages/SignUp';
 import Products from './pages/Products';
 import AddPanel from './pages/AddPanel';
 import HomeSliderBanner from './pages/HomeSliderBanner';
+import Category from './pages/category';
+import SubCategory from './pages/SubCategory';
+import Users from './pages/Users';
+import Orders from './pages/Orders';
 
 const MyContext = createContext();
 
@@ -55,6 +59,22 @@ const App = () => {
       element: <SignUp />,
     },
     {
+      path: '/users',
+      element: (
+        <section className="main">
+          <Header />
+          <div className="contentMain flex">
+            <div className={`sidebarWrapper ${isSideBarOpen === true ? 'w-[18%]': 'w-[0px] opacity-0'} transition-all `}>
+              <Sidebar />
+            </div>
+            <div className= {`contentRight py-4 px-3 ${isSideBarOpen === true ? 'w-[82%]': 'w-[100%]'} transition-all `}>
+              <Users />
+            </div>
+          </div>
+        </section>
+      ),
+    },
+    {
       path: '/products',
       element: (
         <section className="main">
@@ -81,6 +101,54 @@ const App = () => {
             </div>
             <div className= {`contentRight py-4 px-3 ${isSideBarOpen === true ? 'w-[82%]': 'w-[100%]'} transition-all `}>
               <HomeSliderBanner />
+            </div>
+          </div>
+        </section>
+      ),
+    },
+    {
+      path: '/category/list',
+      element: (
+        <section className="main">
+          <Header />
+          <div className="contentMain flex">
+            <div className={`sidebarWrapper ${isSideBarOpen === true ? 'w-[18%]': 'w-[0px] opacity-0'} transition-all `}>
+              <Sidebar />
+            </div>
+            <div className= {`contentRight py-4 px-3 ${isSideBarOpen === true ? 'w-[82%]': 'w-[100%]'} transition-all `}>
+              <Category />
+            </div>
+          </div>
+        </section>
+      ),
+    },
+    {
+      path: '/subCategory/list',
+      element: (
+        <section className="main">
+          <Header />
+          <div className="contentMain flex">
+            <div className={`sidebarWrapper ${isSideBarOpen === true ? 'w-[18%]': 'w-[0px] opacity-0'} transition-all `}>
+              <Sidebar />
+            </div>
+            <div className= {`contentRight py-4 px-3 ${isSideBarOpen === true ? 'w-[82%]': 'w-[100%]'} transition-all `}>
+              <SubCategory />
+            </div>
+          </div>
+        </section>
+      ),
+    },
+    {
+      path: '/orders',
+      element: (
+        <section className="main">
+          <Header />
+          <div className="contentMain flex">
+            <div className={`sidebarWrapper ${isSideBarOpen === true ? 'w-[18%]': 'w-[0px] opacity-0'} transition-all `}>
+              <Sidebar />
+            </div>
+            <div className= {`contentRight py-4 px-3 ${isSideBarOpen === true ? 'w-[82%]': 'w-[100%]'} transition-all `}>
+              <Orders />
             </div>
           </div>
         </section>

@@ -16,6 +16,7 @@ import {MyContext} from '../../App'
 import { RiMenuFoldLine } from "react-icons/ri";
 import { RiMenuFold2Line } from "react-icons/ri";
 import { BiLogInCircle } from "react-icons/bi";
+import { useNavigate } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -27,6 +28,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   }));
 
 const Header = () => {
+    const navigate = useNavigate();
   const context = useContext(MyContext)
   const [anchorMyAccEl, setAnchorMyAccEl] = React.useState(null);
   const open = Boolean(anchorMyAccEl);
@@ -128,7 +130,7 @@ const Header = () => {
                     </div>
                 </div>
             ) : (
-                <Button className='btn-blue !btn-sm !rounded-full !normal-case flex items-center gap-2'>Sign In  <BiLogInCircle className='text-[18px]'/> </Button>
+                <Button onClick={()=>navigate('/signup')} className='btn-blue !btn-sm !rounded-full !normal-case flex items-center gap-2'>Sign In  <BiLogInCircle className='text-[18px]'/> </Button>
             )
         }
 
