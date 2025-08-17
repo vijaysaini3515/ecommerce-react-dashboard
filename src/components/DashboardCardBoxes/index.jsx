@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import './dashboardCardBox.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -11,16 +12,28 @@ import { SiSoundcharts } from "react-icons/si";
 import { BiSolidBank } from "react-icons/bi";
 import { RiProductHuntLine } from "react-icons/ri";
 import { RiAlignItemBottomFill } from "react-icons/ri";
+import { MyContext } from '../../App';
 
 const DashboardCardBoxes = () => {
+
+  const context = useContext(MyContext)
+
+
+
   return (
     <div>
         <Swiper
         slidesPerView={4}
         spaceBetween={10}
         modules={[Navigation]}
-        navigation={true}
-        // className="mySwiper"
+        navigation={context?.windowWidth < 992 ? false : true}
+        breakpoints={{
+          330: { slidesPerView: 1, spaceBetween: 10 },
+          550: { slidesPerView: 2, spaceBetween: 10 },
+          900: { slidesPerView: 3, spaceBetween: 10 },
+          1100: { slidesPerView: 4, spaceBetween: 10 },
+        }}
+        className="cardBox"
       >
         <SwiperSlide>
           <div className="box bg-[#28239e] p-5  border border-[rgba(0,0,0,0.1)] rounded-md flex items-center gap-4 cursor-pointer hover:bg-[#2C2C2C]">

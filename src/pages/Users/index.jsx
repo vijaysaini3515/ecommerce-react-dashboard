@@ -15,6 +15,7 @@ import SearchBox from '../../components/SearchBox';
 import { MyContext } from '../../App';
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import { MdPhoneEnabled } from "react-icons/md";
+import { SlCalender } from "react-icons/sl";
 
 
 
@@ -67,7 +68,7 @@ const Users = () => {
                                       </th>
                                       <th
                                         scope="col"
-                                        className="px-6 py-3 text-center  whitespace-nowrap text-xs font-medium text-gray-500 uppercase"
+                                        className="px-6 py-3  text-center  whitespace-nowrap text-xs font-medium text-gray-500 uppercase"
                                       >
                                       Email
                                       </th>
@@ -77,6 +78,13 @@ const Users = () => {
                                         className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase"
                                       >
                                        Phone
+                                      </th>
+
+                                      <th
+                                        scope="col"
+                                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase"
+                                      >
+                                       CreateAt
                                       </th>
 
                                       <th
@@ -101,9 +109,9 @@ const Users = () => {
 
                                         <th
                                           scope="col"
-                                          className="px-2 py-3"
+                                          className="px-1 py-3"
                                         >
-                                          <div className='flex items-center gap-2 w-[100px]'>
+                                          <div className='flex items-center gap-2 w-[80px]'>
                                             <div className="img w-[45px] h-[45px] rounded-md over-hidden group">
                                               <Link className='' to='/product/9090'>
                                                 <img className='w-full rounded-md transition-all group-hover:scale-105 ' src="https://isomorphic-furyroad.s3.amazonaws.com/public/avatars/avatar-15.webp" alt="" />
@@ -114,28 +122,35 @@ const Users = () => {
                                         </th>
 
                                         <th
-                                          className="px-6 py-3"
+                                          className="px-1 py-3"
                                         >
                                            <span className='font-[500] text-[16px]'>Andersion</span>
                                         </th>
 
                                         <th
-                                          className="px-6 py-3"
+                                          className="px-1 py-3"
                                         >
                                          <span className='font-[500] text-[16px] flex items-center gap-1'><MdOutlineMarkEmailUnread /> Testgmail@info.com</span>
                                         </th>
 
                                         <th
-                                          className="px-6 py-3"
+                                          className="px-1 py-3"
                                         >
                                          <span className='font-[500] text-[16px] flex items-center gap-1'><MdPhoneEnabled /> 91+ 9823749171</span>
+                                           
+                                        </th>
+
+                                        <th
+                                          className="px-1 py-3"
+                                        >
+                                         <span className='font-[500] text-[16px] flex items-center gap-1'><SlCalender /> 24-5-2025</span>
                                            
                                         </th>
 
                                        
 
                                         <th
-                                          className="px-6 py-3"
+                                          className="px-1 py-3"
                                         >
                                           <div className='flex items-center gap-2'>
                                             <Tooltip title="Edit Product" placement="top">

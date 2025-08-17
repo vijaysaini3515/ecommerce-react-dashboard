@@ -35,11 +35,11 @@ const SignUp = () => {
   return (
     <section className="relative"> {/* Added relative positioning */}
       {/* Header */}
-      <header className='fixed top-0 left-0 right-0 z-20 w-full px-4 py-2 flex items-center justify-between'>
+      <header className='fixed top-0 left-0 right-0 z-20 w-full px-4 py-2 flex items-center justify-center sm:justify-between'>
         <Link>
           <img className='w-[120px]' src="https://ecme-react.themenate.net/img/logo/logo-light-full.png" alt="Logo" />
         </Link>
-        <div className='flex items-center gap-4'>
+        <div className='hidden sm:flex items-center gap-4'>
           <NavLink to='/login' className={({ isActive }) => (isActive ? 'isActive' : '')}>
             <Button className='!rounded-full !text-[rgba(0,0,0,0.8)] !px-4 flex items-center gap-2 !normal-case'>
               <BiLogInCircle className='text-[18px]' /> LogIn
@@ -59,16 +59,17 @@ const SignUp = () => {
         src={whiteBgImg} 
         alt="Background"
         style={{ objectFit: 'cover', height: '100vh' }} 
+        
       />
 
-      <div className="loginBox card w-[500px] h-[300px] mx-auto mt-1  relative z-10"> 
+      <div className="loginBox card w-[500px] h-[300px] mx-auto mt-10 sm:mt-2  relative z-10"> 
         <div className="text-center p-4">
           <img src={logo} alt="Logo" className="m-auto w-[100px]" />
         </div>
 
-        <h1 className='font-[800] text-[35px] text-center mt-2'>Join us today! Get special <br/>benefits and stay up-to-date.</h1>
+        <h1 className='font-[800] text-[22px] sm:text-[35px] text-center mt-2'>Join us today! Get special <br/>benefits and stay up-to-date.</h1>
 
-          <div className='flex items-center justify-center gap-5 mt-3'>
+          <div className='flex flex-col sm:flex-row items-center justify-center gap-5 mt-3'>
                   <Button
                       size="small"
                       onClick={handleClickGoogle}
@@ -97,7 +98,7 @@ const SignUp = () => {
 
           <div className='w-full flex items-center justify-center gap-3'>
             <span className='w-[100px] h-[1px] bg-[rgba(236,236,236,0.5)] flex items-center justify-center '></span>
-            <span className='text-[14px] text-[rgba(236,236,236,0.95)]'>Or, Sign in with your email</span>
+            <span className='text-[10px] sm:text-[14px] text-[rgba(236,236,236,0.95)]'>Or, Sign in with your email</span>
             <span className='w-[100px] h-[1px] bg-[rgba(236,236,236,0.5)] flex items-center justify-center '></span>
           </div>
 
@@ -135,6 +136,10 @@ const SignUp = () => {
                <FormControlLabel 
                  control={<Checkbox size='small' sx={{ color: 'white', '&.Mui-checked': {color: 'white'}}} defaultChecked />} 
                  label={<Typography sx={{ fontSize: '13px', color: 'white' }}>By signing up you have agreed to our <span className='font-[800] text-[14px]'>Terms</span> & <span className='font-[800]  text-[14px]'>Privacy Policy</span></Typography>} />
+            </div>
+            <div className='form-group mb-4 w-full flex items-center justify-between'>
+              <span className='text-white text-[12px]'>Already have an account </span>
+               <Link className='text-[var(--primary)] font-[700] text-[14px] hover:text-gray-300 hover:underline' to='/login'>Login</Link>
             </div>
             <Button className='btn-lg w-full !capitalize'>Sign Up</Button>
           </form>

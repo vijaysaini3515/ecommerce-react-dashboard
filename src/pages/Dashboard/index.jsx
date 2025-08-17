@@ -51,21 +51,21 @@ const Dashboard = () => {
   return (
     <>
 
-      <div className="w-full bg-white py-2 px-5 mb-5 rounded-sm border border-[rgba(0,0,0,0.1)] flex items-center justify-between gap-8">
+      <div className="w-full bg-white py-2 px-5 mb-5 rounded-sm border border-[rgba(0,0,0,0.1)]  flex items-center justify-between gap-8">
         <div className="info">
-          <h1 className='mb-3 text-[35px] font-bold leading-10'>Good Morning, <br /> Cameron</h1>
+          <h1 className='mb-3 text-[35px] font-bold leading-10'>Good Morning, <br /> <span className="text-[var(--primary)]">Cameron</span></h1>
           <p className='text-[rgba(0,0,0,0.6)] mb-2'>Here’s What happening on your store today. See the statistics at once.</p>
           <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add Product'})} className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
 
         </div>
-        <img className='w-[250px] hover:scale-105 transition-all' src={homeImg} alt="" />
+        <img className='w-[250px] hidden sm:block hover:scale-105 transition-all' src={homeImg} alt="" />
       </div>
 
       <DashboardCardBoxes />
 
       <div className='card my-4 shadow-md sm:rounded-lg bg-white'>
         <div className='flex items-center justify-between px-5 py-5'>
-            <h3 className='text-[18px] font-[600]'>Recent Orders</h3>
+            <h3 className='text-[25px] sm:text-[18px] font-[600]'>Recent Orders</h3>
           </div>
 
           <div className="col1 w-full lg:w-[100%] ">
@@ -485,12 +485,12 @@ const Dashboard = () => {
             <h3 className='text-[18px] font-[600] '>Products</h3>
           </div>
 
-          <div className="flex items-center justify-between w-full pl-5 mb-2">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-[10px] w-full pl-5 mb-2">
 
-            <div className='col w-[20%]'>
+            <div className='col w-full sm:w-[20%] mr-3'>
               <h4 className='font-[600] text-[18px]'>Category By</h4>
                 <Select
-                  className='w-full mt-2'
+                  className='w-full mt-2 '
                   size='small'
                   id="demo-simple-select-helper"
                   value={categoryFilter}
@@ -505,7 +505,7 @@ const Dashboard = () => {
                 </Select>
             </div>
 
-            <div className="col w-[26%] ml-auto flex items-center gap-3 ">
+            <div className="col w-full sm:w-[30%]  flex items-center gap-3 ">
                  <Button className='btn btn-sm !bg-green-600 !text-white flex items-center gap-1 !normal-case'> <AiOutlineCloudDownload className='text-[18px] font-[800] ' /> Export</Button>                       
                  <Button onClick={()=>context.setIsOpenPanel({open:true,model:'Add Product'})} className='btn-blue btn-sm  !text-white  flex items-center gap-1 !normal-case'><FaPlus className='text-[14px] font-[600] '/> Add Product</Button>                       
             </div>

@@ -42,7 +42,7 @@ const Header = () => {
 
 
   return (
-   <header className={`bg-white ${context.isSideBarOpen === true ? 'pl-64' : 'pl-5'} transition-all pr-3 py-2 w-full h-[auto] shadow-sm flex items-center justify-between`}>
+   <header className={`bg-white ${context.isSideBarOpen === true ? 'pl-64' : 'pl-5'} ${context.isSideBarOpen === true && context?.windowWidth < 992 && '!pl-55'} z-50 relative transition-all pr-3 py-2 w-full h-[auto] shadow-sm flex items-center justify-between`}>
         <div className="part1">
             <Button onClick={()=>context.setIsSideBarOpen(!context.isSideBarOpen)} className='!w-[40px] !min-w-[40px] !h-[40px] !rounded-full !text-[rgba(0,0,0,0.8)]'>
                 {
@@ -52,7 +52,7 @@ const Header = () => {
         </div>
 
         {
-            context.isLogin === true ? (
+            context.isLogin === false ? (
                 <div className="part2 w-[40%] flex items-center justify-end gap-5">
                     <IconButton aria-label="cart">
                         <StyledBadge badgeContent={4} color="secondary">
